@@ -6,7 +6,7 @@
 #    By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/28 17:28:49 by acoste            #+#    #+#              #
-#    Updated: 2024/12/28 18:51:30 by acoste           ###   ########.fr        #
+#    Updated: 2024/12/29 18:52:27 by acoste           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ NAME		=	cub3D
 SRC_DIR		=	src/
 
 SRC_FILES	=	main.c\
-				utils.c
+				utils.c\
+				event.c
 
 SRC			=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 

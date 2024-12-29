@@ -6,23 +6,52 @@
 /*   By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 17:36:20 by acoste            #+#    #+#             */
-/*   Updated: 2024/12/28 18:39:00 by acoste           ###   ########.fr       */
+/*   Updated: 2024/12/29 21:39:29 by acoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
 
-int	close_handler(t_cube *c)
+int	render_frame(t_cube *c)
 {
-	mlx_destroy_image(c->ptr, c->img.img_ptr);
-	mlx_destroy_window(c->ptr, c->win);
-	mlx_destroy_display(c->ptr);
-	free(c->ptr);
-	exit(EXIT_SUCCESS);
+	(void)c;
+	return (0);
+}
+
+void	init_img(t_cube *c)
+{
+	int i;
+	int y;
+
+	i = 150;
+	y = 150;
+	c->sprite.wizard.img_ptr = mlx_xpm_file_to_image(c->ptr,
+			"textures/wizard.xpm", &i, &y);
+}
+
+void	show_img(t_cube *c)
+{
+	int i;
+	int y;
+
+	i = 0;
+	while (i < WIDTH)
+	{
+		y = 0;
+		while (y < HEIGHT)
+		{
+			
+			y++;
+		}
+		i++;
+	}
 }
 
 void	cube3d_init(t_cube *c)
 {
+	int i;
+
+	i = 0;
 	c->ptr = mlx_init();
 	if (c->ptr == NULL)
 		ft_error(0);
@@ -33,6 +62,7 @@ void	cube3d_init(t_cube *c)
 		free(c->ptr);
 		ft_error(0);
 	}
+	/*
 	c->img.img_ptr = mlx_new_image(c->ptr, WIDTH, HEIGHT);
 	if (c->img.img_ptr == NULL)
 	{
@@ -41,7 +71,12 @@ void	cube3d_init(t_cube *c)
 		free (c->ptr);
 		ft_error(0);
 	}
-//	event_init(c);     //todo for moving the characters
+	*/
+	init_img(c);
+	show_img(c);
+	event_init(c);   //todo for moving the characters
+	mlx_loop_hook(c->ptr, render_frame, c);
+	mlx_loop(c->ptr);
 }
 
 /*
@@ -56,12 +91,9 @@ int	main(void)
 	t_cube	c;
 
 	c.name = "Cube 3D";
+
 	cube3d_init(&c);
 //	cube3d_render(&c); //TODO
-	mlx_loop(c.ptr);
-	usleep (900);
-	close_handler(&c);
-	//
-	printf("aa\n");
-	return (0);
+	close_handler(&c); //TODO
+	exit(EXIT_SUCCESS);
 }
