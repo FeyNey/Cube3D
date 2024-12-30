@@ -6,7 +6,7 @@
 /*   By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 17:36:20 by acoste            #+#    #+#             */
-/*   Updated: 2024/12/29 21:39:29 by acoste           ###   ########.fr       */
+/*   Updated: 2024/12/30 23:52:29 by acoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ void	show_img(t_cube *c)
 		y = 0;
 		while (y < HEIGHT)
 		{
-			
+			mlx_put_image_to_window(c->ptr, c->win, c->sprite.wizard.img_ptr, i * 64, y * 64);
 			y++;
 		}
 		i++;
-	}
+	};
 }
 
 void	cube3d_init(t_cube *c)
@@ -62,7 +62,6 @@ void	cube3d_init(t_cube *c)
 		free(c->ptr);
 		ft_error(0);
 	}
-	/*
 	c->img.img_ptr = mlx_new_image(c->ptr, WIDTH, HEIGHT);
 	if (c->img.img_ptr == NULL)
 	{
@@ -71,7 +70,6 @@ void	cube3d_init(t_cube *c)
 		free (c->ptr);
 		ft_error(0);
 	}
-	*/
 	init_img(c);
 	show_img(c);
 	event_init(c);   //todo for moving the characters
