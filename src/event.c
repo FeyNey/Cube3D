@@ -6,7 +6,7 @@
 /*   By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 17:47:49 by acoste            #+#    #+#             */
-/*   Updated: 2024/12/29 17:50:28 by acoste           ###   ########.fr       */
+/*   Updated: 2024/12/31 16:47:18 by acoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	key_handler(int keysim, t_cube *c)
 
 int	close_handler(t_cube *c)
 {
-	// mlx_destroy_image(c->ptr, c->img.img_ptr);
+	mlx_destroy_image(c->ptr, c->sprite.wizard.img_ptr);
+	mlx_destroy_image(c->ptr, c->img.img_ptr);
 	mlx_destroy_window(c->ptr, c->win);
 	mlx_destroy_display(c->ptr);
 	free(c->ptr);
