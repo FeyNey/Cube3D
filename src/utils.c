@@ -6,7 +6,7 @@
 /*   By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 17:46:31 by acoste            #+#    #+#             */
-/*   Updated: 2024/12/31 16:54:33 by acoste           ###   ########.fr       */
+/*   Updated: 2025/01/04 18:02:04 by acoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,11 @@ void	ft_error(int nb)
 		printf ("Map isn't a '.cub'\n\tTry ./cub3d map/map_name.cub\n");
 	if (nb == 5)
 		printf ("Map does not exist\n\tPlease verify the Path you entered");
+	if (nb == 6)
+	{
+		printf("Map not valid, no path to an oriation texture North South West \
+		or East\n");
+	}
 	//liste des erreurs avec un code (a completer)
 	exit(EXIT_FAILURE);
 }

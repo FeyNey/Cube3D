@@ -6,7 +6,7 @@
 /*   By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 17:27:54 by acoste            #+#    #+#             */
-/*   Updated: 2024/12/31 15:38:21 by acoste           ###   ########.fr       */
+/*   Updated: 2025/01/04 17:35:37 by acoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ typedef struct s_map
 	char	*ouestpath;
 	int		floorcolor;
 	int		ceilingcolor;
+	int		fd;
+	int		x;
+	int		y;
 }				t_map;
 
 //fenetre
@@ -76,6 +79,7 @@ void	ft_error(int nb);
 
 //map_setup
 void	initialised_map(t_map *map);
+void	map_init(t_map *map);
 
 //hook / handler
 void	event_init(t_cube *c);
@@ -92,5 +96,9 @@ char	*ft_strjoin(char *stash, char *buffer);
 char	*read_file(int fd, char *stash);
 char	*ft_next_line(char *stash);
 char	*get_next_line(int fd);
+
+//verif_map
+int	check_map_is_valid(char *argv, t_cube *c);
+int	is_cub_file(char *argv);
 
 #endif

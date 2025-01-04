@@ -6,7 +6,7 @@
 #    By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/28 17:28:49 by acoste            #+#    #+#              #
-#    Updated: 2024/12/31 15:36:14 by acoste           ###   ########.fr        #
+#    Updated: 2025/01/04 17:27:55 by acoste           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,8 @@ SRC_FILES	=	main.c\
 				event.c\
 				map_setup.c\
 				get_next_line.c\
-				get_next_line_utils.c
+				get_next_line_utils.c\
+				image.c
 
 SRC			=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 
