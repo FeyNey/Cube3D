@@ -6,7 +6,7 @@
 /*   By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 17:27:54 by acoste            #+#    #+#             */
-/*   Updated: 2025/01/04 17:35:37 by acoste           ###   ########.fr       */
+/*   Updated: 2025/01/05 16:06:17 by acoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ typedef struct s_map
 	char	*northpath;
 	char	*southpath;
 	char	*estpath;
-	char	*ouestpath;
+	char	*westpath;
 	int		floorcolor;
 	int		ceilingcolor;
 	int		fd;
@@ -100,5 +100,14 @@ char	*get_next_line(int fd);
 //verif_map
 int	check_map_is_valid(char *argv, t_cube *c);
 int	is_cub_file(char *argv);
+void	extract_texture_for_map(t_map *map);
+void	display_map(t_map *map);
+void	get_map_path_to_texture(t_map *map);
+void	get_size_map(int fd, int *map_size_x, int *map_size_y);
+
+void	free_map(t_map *map);
+int	assign_texture_to_struct(t_map *map, char *str);
+int	assign_texture_to_struct2(t_map *map, char *str);
+char	*ft_strdup_till(char *str, char c);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:35:18 by acoste            #+#    #+#             */
-/*   Updated: 2025/01/04 17:35:28 by acoste           ###   ########.fr       */
+/*   Updated: 2025/01/05 15:39:31 by acoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	initialised_map(t_map *map)
 	map->northpath = NULL;
 	map->southpath = NULL;
 	map->estpath = NULL;
-	map->ouestpath = NULL;
+	map->westpath = NULL;
 }
 
 void	map_init(t_map *map)
