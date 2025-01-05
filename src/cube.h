@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+        */
+/*   By: alexis <alexis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 17:27:54 by acoste            #+#    #+#             */
-/*   Updated: 2025/01/05 16:06:17 by acoste           ###   ########.fr       */
+/*   Updated: 2025/01/05 19:14:00 by alexis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,14 @@ void	cube3d_init(t_cube *c);
 
 //utils.c
 void	ft_error(int nb);
+char	*ft_strdup_till(char *str, char c);
+int		ft_atoi(char *nptr);
 
 //map_setup
 void	initialised_map(t_map *map);
 void	map_init(t_map *map);
+void	display_map(t_map *map);
+void	free_map(t_map *map);
 
 //hook / handler
 void	event_init(t_cube *c);
@@ -96,18 +100,19 @@ char	*ft_strjoin(char *stash, char *buffer);
 char	*read_file(int fd, char *stash);
 char	*ft_next_line(char *stash);
 char	*get_next_line(int fd);
+void	read_file_till_end(t_map *map);
 
 //verif_map
 int	check_map_is_valid(char *argv, t_cube *c);
 int	is_cub_file(char *argv);
-void	extract_texture_for_map(t_map *map);
-void	display_map(t_map *map);
-void	get_map_path_to_texture(t_map *map);
-void	get_size_map(int fd, int *map_size_x, int *map_size_y);
+void	get_size_map(int fd, int *map_size_x, int *map_size_y); //none use fn
 
-void	free_map(t_map *map);
+//texture_map
+void	get_map_path_to_texture(t_map *map, int verif);
 int	assign_texture_to_struct(t_map *map, char *str);
 int	assign_texture_to_struct2(t_map *map, char *str);
-char	*ft_strdup_till(char *str, char c);
+
+//color_map
+void	extract_color_from_map(t_map *map);
 
 #endif

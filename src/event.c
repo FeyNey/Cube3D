@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+        */
+/*   By: alexis <alexis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 17:47:49 by acoste            #+#    #+#             */
-/*   Updated: 2024/12/31 16:47:18 by acoste           ###   ########.fr       */
+/*   Updated: 2025/01/05 18:36:05 by alexis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	close_handler(t_cube *c)
 	mlx_destroy_window(c->ptr, c->win);
 	mlx_destroy_display(c->ptr);
 	free(c->ptr);
+	//free_map(c->map);
 	exit(EXIT_SUCCESS);
 }
 

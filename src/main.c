@@ -3,202 +3,105 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+        */
+/*   By: alexis <alexis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 17:36:20 by acoste            #+#    #+#             */
-/*   Updated: 2025/01/05 17:36:21 by acoste           ###   ########.fr       */
+/*   Updated: 2025/01/05 20:40:52 by alexis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
+/*
+//255, 00, 00
+char *hexadecimal;
 
-void	get_size_map(int fd, int *map_size_x, int *map_size_y)
+char *str;
+
+str -> 255 until ',' i++, str[i] = '\0';
+
+ft_convert_to_hexa(str);
+*/
+
+int	compose_color(char *str)
 {
+	// str = 255,0,0 ex
+	char *temp;
 	int i;
-	char *str;
+	int color;
+	int color2;
+	int color3;
 
 	i = 0;
-	str = "r";
-	while (1)
-	{
-		str = get_next_line(fd);
-		if (str == NULL)
-			break;
-		if (ft_strlen(str) > (*map_size_x))
-			*map_size_x = strlen(str);
+	temp = str;
+	while(str[i] >= '0' && str[i] <= '9')
 		i++;
-		free(str);
-	}
-	*map_size_y = i;
-	printf("map_size_x = %i\n", *map_size_x);
-	printf("map_size_y = %i\n", *map_size_y);
+	temp[i] == '\0';
+	color = ft_atoi(str);
+	if (color < 0 || color > 255)
+		return(-1);
+	return(color);
 }
 
-void	free_map(t_map *map)
+int	get_color_value(t_map *map, char *str)
 {
-	if (map->northpath)
-		free(map->northpath);
-	if (map->southpath)
-		free(map->southpath);
-	if (map->westpath)
-		free(map->westpath);
-	if (map->estpath)
-		free(map->estpath);
-}
+	int color;
 
-char	*ft_strdup_till(char *str, char c)
-{
-	int		i;
-	char	*dup;
-
-	i = 0;
-	while (str[i] != c && str[i])
-		i++;
-	dup = (char *)malloc(sizeof(char) * (i + 1));
-	if (!dup)
-		return (NULL);
-	i = 0;
-	while (str[i] != c && str[i])
+	if (str[0] == 'F')
 	{
-		dup[i] = str[i];
-		i++;
-	}
-	dup[i] = '\0';
-	return (dup);
-}
-
-int	assign_texture_to_struct(t_map *map, char *str)
-{
-	char *dupp;
-
-	if (str[0] == 'N')
-	{
-		while (*str != '.' && *str)
+		while (*str < '0' && *str > '9' && *str)
 			str++;
-		if (!(*str))
+		if (!str)
 			return (2);
-		dupp = ft_strdup_till(str, '\n');
-		map->northpath = dupp;
+		color = compose_color(str);
+		if (color == -1)
+			return (2);
+		map->floorcolor = color;
 		return (1);
 	}
-	if (str[0] == 'S')
+
+
+
+	if (str[0] == 'C')
 	{
-		while (*str != '.' && *str)
+		while (*str < '0' && *str > '9' && *str)
 			str++;
-		if (!(*str))
+		if (!str)
 			return (2);
-		dupp = ft_strdup_till(str, '\n');
-		map->southpath = dupp;
+		color = compose_color(str);
+		map->ceilingcolor = color;
 		return (1);
 	}
-	return (assign_texture_to_struct2(map, str));
+	if (str[0] == '\n')
+		return (0);
+	return (1);
 }
 
-int	assign_texture_to_struct2(t_map *map, char *str)
-{
-	char *dupp;
-
-	if (str[0] == 'W')
-	{
-		while (*str != '.' && *str)
-			str++;
-		if (!(*str))
-			return (2);
-		dupp = ft_strdup_till(str, '\n');
-		map->westpath = dupp;
-		return (1);
-	}
-	if (str[0] == 'E')
-	{
-		while (*str != '.' && *str)
-			str++;
-		if (!(*str))
-			return (2);
-		dupp = ft_strdup_till(str, '\n');
-		map->estpath = dupp;
-		return (1);
-	}
-	return (0);
-}
-
-void	read_file_till_end(t_map *map)
-{
-	char *str;
-
-	str = "a";
-	while (str != NULL)
-	{
-		str = get_next_line(map->fd);
-		if (str)
-			free(str);
-	}
-}
-
-// changer les retour en fonction de 0 // 2 et 1
-//leak
-
-void	get_map_path_to_texture(t_map *map, int verif)
+void	extract_color_from_map(t_map *map, int verif)
 {
 	char *str;
 	int i;
 
 	i = 0;
-	while (i <= 3)
+	while (i < 2)
 	{
 		str = get_next_line(map->fd);
 		if (!str)
 			break;
-		verif = assign_texture_to_struct(map, str);
-		if (assign_texture_to_struct(map, str) != 1 && *str != '\n')
-			break;
-		else
+		verif = get_color_value(map, str);
+		if (verif = 1)
 			i++;
+		else if (verif = 2)
+			break;
 		if (str)
 			free(str);
 	}
-	if (i <= 3)
+	if (i < 2)
 	{
 		if (str)
 			free(str);
-		read_file_till_end(map);
-		return (free_map(map), ft_error(6));
+		read_file_till_end(map->fd);
+		return (free_map(map), ft_error(7));
 	}
-}
-
-void	display_map(t_map *map)
-{
-	printf("\n");
-	printf("map fd = %i\n", map->fd);
-
-	printf("Map North Texture = %s\n", map->northpath);
-	printf("Map South Texture = %s\n", map->southpath);
-	printf("Map West Texture  = %s\n", map->westpath);
-	printf("Map East Texture  = %s\n", map->estpath);
-
-	return ;
-	printf("");
-	printf("");
-
-	printf("");
-	printf("");
-}
-
-void	extract_texture_for_map(t_map *map)
-{
-	int i;
-	int map_size_x;
-	int map_size_y;
-
-	i = 0;
-	map_size_x = 0;
-	map_size_y = 0;
-	get_map_path_to_texture(map, 0);
-	display_map(map);
-	exit (1);
-	//get_map_floor_ceiling_color(map); //TODO
-	get_size_map(map->fd, &map_size_x, &map_size_y);
-	map->x = map_size_x;
-	map->y = map_size_y;
 }
 
 int	main(int argc, char **argv)

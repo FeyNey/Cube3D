@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+        */
+/*   By: alexis <alexis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:22:43 by acoste            #+#    #+#             */
-/*   Updated: 2025/01/04 17:23:14 by acoste           ###   ########.fr       */
+/*   Updated: 2025/01/05 18:26:35 by alexis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,6 @@ void	show_img(t_cube *c)
 
 void	cube3d_init(t_cube *c)
 {
-	int i;
-
-	i = 0;
 	c->ptr = mlx_init();
 	if (c->ptr == NULL)
 		ft_error(1);

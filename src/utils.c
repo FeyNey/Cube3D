@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+        */
+/*   By: alexis <alexis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 17:46:31 by acoste            #+#    #+#             */
-/*   Updated: 2025/01/04 18:02:04 by acoste           ###   ########.fr       */
+/*   Updated: 2025/01/05 19:21:35 by alexis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,53 @@ void	ft_error(int nb)
 		printf("Map not valid, no path to an oriation texture North South West \
 		or East\n");
 	}
-	//liste des erreurs avec un code (a completer)
+	if (nb == 7)
+		printf("Map not valid, no path to a ceiling/floor color texture found");
 	exit(EXIT_FAILURE);
+}
+
+char	*ft_strdup_till(char *str, char c)
+{
+	int		i;
+	char	*dup;
+
+	i = 0;
+	while (str[i] != c && str[i])
+		i++;
+	dup = (char *)malloc(sizeof(char) * (i + 1));
+	if (!dup)
+		return (NULL);
+	i = 0;
+	while (str[i] != c && str[i])
+	{
+		dup[i] = str[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
+}
+
+int	ft_atoi(char *nptr)
+{
+	int	i;
+	int	sign;
+	int	res;
+
+	i = 0;
+	sign = 1;
+	res = 0;
+	while ((nptr[i] >= 9 && nptr[i] <= 13) || nptr[i] == 32)
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
+	{
+		if (nptr[i] == '-')
+			sign = (sign * (-1));
+		i++;
+	}
+	while (nptr[i] >= '0' && nptr[i] <= '9')
+	{
+		res = (res * 10) + (nptr[i] - '0');
+		i++;
+	}
+	return (res * sign);
 }

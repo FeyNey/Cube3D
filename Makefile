@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+         #
+#    By: alexis <alexis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/28 17:28:49 by acoste            #+#    #+#              #
-#    Updated: 2025/01/05 16:08:59 by acoste           ###   ########.fr        #
+#    Updated: 2025/01/05 18:41:57 by alexis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,7 @@ SRC_FILES	=	main.c\
 				get_next_line_utils.c\
 				image.c\
 				verif_map.c\
+				texture_map.c\
 
 SRC			=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 
