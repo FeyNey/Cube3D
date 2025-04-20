@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   event.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexis <alexis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 17:47:49 by acoste            #+#    #+#             */
-/*   Updated: 2025/01/05 18:36:05 by alexis           ###   ########.fr       */
+/*   Updated: 2025/04/20 15:13:47 by acoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ int	key_handler(int keysim, t_cube *c)
 
 int	close_handler(t_cube *c)
 {
+	free_map(&(c->map)); // normalement fait dans le return de l'erreur avant.
 	mlx_destroy_image(c->ptr, c->sprite.wizard.img_ptr);
 	mlx_destroy_image(c->ptr, c->img.img_ptr);
 	mlx_destroy_window(c->ptr, c->win);
 	mlx_destroy_display(c->ptr);
 	free(c->ptr);
-	//free_map(c->map);
 	exit(EXIT_SUCCESS);
 }
 

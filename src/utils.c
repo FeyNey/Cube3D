@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexis <alexis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 17:46:31 by acoste            #+#    #+#             */
-/*   Updated: 2025/01/05 19:21:35 by alexis           ###   ########.fr       */
+/*   Updated: 2025/04/20 22:20:59 by acoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,19 +28,23 @@ void	ft_error(int nb)
 	if (nb == 6)
 	{
 		printf("Map not valid, no path to an oriation texture North South West \
-		or East\n");
+or East\n");
 	}
-	if (nb == 7)
-		printf("Map not valid, no path to a ceiling/floor color texture found");
+	//liste des erreurs avec un code (a completer)
 	exit(EXIT_FAILURE);
 }
 
 char	*ft_strdup_till(char *str, char c)
 {
 	int		i;
+	int		j;
 	char	*dup;
 
 	i = 0;
+	j = ft_strlen(str);
+	j--;
+	while (is_white_space(str[j]))
+		j--;
 	while (str[i] != c && str[i])
 		i++;
 	dup = (char *)malloc(sizeof(char) * (i + 1));
@@ -51,12 +55,37 @@ char	*ft_strdup_till(char *str, char c)
 	{
 		dup[i] = str[i];
 		i++;
+		if (i > j)
+			break;
 	}
 	dup[i] = '\0';
 	return (dup);
 }
 
-int	ft_atoi(char *nptr)
+char	*cut_string(char *str, char scaract)
+{
+	char *dupp;
+
+	if (str[0] != scaract && str[0] != ' ')
+		return (NULL);
+	if (str[0] == scaract)
+		str++;
+	while (*str && is_white_space(*str))
+			str++;
+	if (!str)
+		return (NULL);
+	dupp = ft_strdup_till(str, '\n');
+	return (dupp);
+}
+
+int	is_white_space(int c)
+{
+	if ((c >= 7 && c <= 13) || c == 32)
+		return (1);
+	return (0);
+}
+
+int	ft_atoi(const char *nptr)
 {
 	int	i;
 	int	sign;
@@ -70,7 +99,7 @@ int	ft_atoi(char *nptr)
 	if (nptr[i] == '-' || nptr[i] == '+')
 	{
 		if (nptr[i] == '-')
-			sign = (sign * (-1));
+			sign *= -1;
 		i++;
 	}
 	while (nptr[i] >= '0' && nptr[i] <= '9')
@@ -79,4 +108,19 @@ int	ft_atoi(char *nptr)
 		i++;
 	}
 	return (res * sign);
+}
+
+void	ft_free_split(char **split)
+{
+	int	i;
+
+	i = 0;
+	if (!split)
+		return ;
+	while (split[i])
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
 }

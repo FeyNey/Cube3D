@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexis <alexis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 17:27:54 by acoste            #+#    #+#             */
-/*   Updated: 2025/01/05 19:14:00 by alexis           ###   ########.fr       */
+/*   Updated: 2025/04/20 23:00:32 by acoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_img
 typedef struct	s_sprite
 {
 	t_img	wizard;
+	//sprite to add;
 }				t_sprite;
 
 typedef struct s_map
@@ -76,14 +77,10 @@ void	cube3d_init(t_cube *c);
 
 //utils.c
 void	ft_error(int nb);
-char	*ft_strdup_till(char *str, char c);
-int		ft_atoi(char *nptr);
 
 //map_setup
 void	initialised_map(t_map *map);
 void	map_init(t_map *map);
-void	display_map(t_map *map);
-void	free_map(t_map *map);
 
 //hook / handler
 void	event_init(t_cube *c);
@@ -102,17 +99,27 @@ char	*ft_next_line(char *stash);
 char	*get_next_line(int fd);
 void	read_file_till_end(t_map *map);
 
+//ft_strtrim
+char	*ft_strtrim(char *s, char const *set);
+
 //verif_map
-int	check_map_is_valid(char *argv, t_cube *c);
-int	is_cub_file(char *argv);
-void	get_size_map(int fd, int *map_size_x, int *map_size_y); //none use fn
-
-//texture_map
+int		check_map_file_is_valid(char *argv, t_cube *c);
+int		is_cub_file(char *argv);
+void	extract_texture_for_map(t_map *map);
+void	display_map(t_map *map);
 void	get_map_path_to_texture(t_map *map, int verif);
-int	assign_texture_to_struct(t_map *map, char *str);
-int	assign_texture_to_struct2(t_map *map, char *str);
+void	get_size_map(int fd, int *map_size_x, int *map_size_y);
 
-//color_map
-void	extract_color_from_map(t_map *map);
+void	free_map(t_map *map);
+int		assign_texture_to_struct(t_map *map, char *str);
+int		assign_texture_to_struct2(t_map *map, char *str);
+char	*ft_strdup(char *str);
+
+char	*cut_string(char *str, char scaract);
+int		is_white_space(int c);
+char	**ft_split(char const *s, char c);
+int		ft_atoi(const char *nptr);
+void	ft_free_split(char **split);
+int		assign_texture_to_struct3(t_map *map, char *str);
 
 #endif

@@ -3,27 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: alexis <alexis@student.42.fr>              +#+  +:+       +#+        */
+/*   By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 23:02:04 by acoste            #+#    #+#             */
-/*   Updated: 2025/01/05 18:38:18 by alexis           ###   ########.fr       */
+/*   Updated: 2025/04/20 17:12:47 by acoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube.h"
-
-void	read_file_till_end(t_map *map)
-{
-	char *str;
-
-	str = "a";
-	while (str != NULL)
-	{
-		str = get_next_line(map->fd);
-		if (str)
-			free(str);
-	}
-}
 
 char	*ft_malloc_char(int height)
 {
@@ -60,4 +47,17 @@ int	ft_search(char *str, char c)
 		i++;
 	}
 	return (-1);
+}
+
+void	read_file_till_end(t_map *map)
+{
+	char *str;
+
+	str = "a";
+	while (str != NULL)
+	{
+		str = get_next_line(map->fd);
+		if (str)
+			free(str);
+	}
 }
