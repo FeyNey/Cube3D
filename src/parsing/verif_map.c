@@ -6,11 +6,11 @@
 /*   By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 17:29:37 by acoste            #+#    #+#             */
-/*   Updated: 2025/04/20 23:19:00 by acoste           ###   ########.fr       */
+/*   Updated: 2025/04/23 15:05:58 by acoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "../cube.h"
 
 int	is_cub_file(char *argv)
 {

@@ -6,11 +6,11 @@
 /*   By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 19:07:05 by acoste            #+#    #+#             */
-/*   Updated: 2024/12/31 15:08:47 by acoste           ###   ########.fr       */
+/*   Updated: 2025/04/23 15:22:31 by acoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "../cube.h"
 
 char	*ft_strjoin(char *stash, char *buffer)
 {
@@ -31,7 +31,7 @@ char	*ft_strjoin(char *stash, char *buffer)
 	return (stock);
 }
 
-char	*read_file(int fd, char *stash)
+static char	*read_file(int fd, char *stash)
 {
 	char	*buffer;
 	int		i;
@@ -57,7 +57,7 @@ char	*read_file(int fd, char *stash)
 	return (stash);
 }
 
-char	*ft_line(char *stash)
+static char	*ft_line(char *stash)
 {
 	char	*line;
 	int		i;
@@ -85,7 +85,7 @@ char	*ft_line(char *stash)
 	return (line);
 }
 
-char	*ft_next_line(char *stash)
+static char	*ft_next_line(char *stash)
 {
 	char	*line;
 	int		i;

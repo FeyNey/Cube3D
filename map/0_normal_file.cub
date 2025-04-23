@@ -1,14 +1,10 @@
 
-
-R 500 500
-
-
 NO cub3d.h
-SO cub3d.h
+SO cub3d.h    test
 WE cub3d.h
 
 EA cub3d.h
-S cub3d.h
+SO cub3d.h
 
 
 F 0,76,211

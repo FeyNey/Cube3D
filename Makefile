@@ -6,7 +6,7 @@
 #    By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/28 17:28:49 by acoste            #+#    #+#              #
-#    Updated: 2025/04/20 21:46:13 by acoste           ###   ########.fr        #
+#    Updated: 2025/04/23 16:06:54 by acoste           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,16 @@ SRC_DIR		=	src/
 
 SRC_FILES	=	main.c\
 				utils.c\
-				event.c\
-				map_setup.c\
-				get_next_line.c\
-				get_next_line_utils.c\
-				image.c\
-				verif_map.c\
-				ft_split.c\
+				debug.c\
+				display/event.c\
+				display/image.c\
+				display/map_setup.c\
+				parsing/ft_split.c\
+				parsing/get_next_line.c\
+				parsing/get_next_line_utils.c\
+				parsing/texture_to_struct.c\
+				parsing/texture_to_struct_utils.c\
+				parsing/verif_map.c\
 
 SRC			=	$(addprefix $(SRC_DIR), $(SRC_FILES))
 

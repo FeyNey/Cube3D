@@ -6,11 +6,11 @@
 /*   By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/31 15:35:18 by acoste            #+#    #+#             */
-/*   Updated: 2025/04/20 23:24:36 by acoste           ###   ########.fr       */
+/*   Updated: 2025/04/23 15:37:59 by acoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "../cube.h"
 
 void	initialised_map(t_map *map)
 {

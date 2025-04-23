@@ -6,11 +6,11 @@
 /*   By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 17:47:49 by acoste            #+#    #+#             */
-/*   Updated: 2025/04/20 15:13:47 by acoste           ###   ########.fr       */
+/*   Updated: 2025/04/23 15:31:50 by acoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "../cube.h"
 
 int	key_handler(int keysim, t_cube *c)
 {

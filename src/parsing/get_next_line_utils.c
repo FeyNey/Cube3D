@@ -6,11 +6,11 @@
 /*   By: acoste <acoste@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/26 23:02:04 by acoste            #+#    #+#             */
-/*   Updated: 2025/04/20 17:12:47 by acoste           ###   ########.fr       */
+/*   Updated: 2025/04/23 15:05:51 by acoste           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube.h"
+#include "../cube.h"
 
 char	*ft_malloc_char(int height)
 {
